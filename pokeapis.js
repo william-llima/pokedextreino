@@ -1,7 +1,10 @@
-console.time
-const pokecontainer=document.querySelector(".user");
-const  teste =document.querySelector('.teste');
 
+const pokecontainer=document.querySelector(".user");
+var  poke =document.querySelector('.teste');
+var type= document.querySelector(".type");
+const bord= document.querySelector(".lusinicial")
+
+var state ="desligado"
 var mudapoke=1;
 function listapoke(id){
     
@@ -18,7 +21,14 @@ function listapoke(id){
                     resposta=JSON.parse(resposta);
                     resolve(resposta)
                     const  imgteste =document.getElementById('img').src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${mudapoke}.png`;
-                    teste.innerHTML=resposta.name;
+                    if (state=="desligado"){
+                        poke.innerHTML=" "
+                        type.innerHTML=" "
+                    }
+                    else{
+                    poke.innerHTML="name : "+resposta.name;
+                    type.innerHTML= "Type : "+resposta.types[0].type.name
+                    }
 
                 }
                 else{
@@ -52,16 +62,18 @@ function addelemento(container,tag,...text){
 function NewPoke(){
     mudapoke+=1;
     listapoke();
+    bord.style.border="4px solid blue"
     
+
+    setTimeout(muda,1000)
     
+}
+function muda(){
+
+    bord.style.border="4px solid white"
 }
 
 
-listapoke(1)
-.then( resposta => {
-
-   } )
-.catch( err => console.log(err) )
 
 
 
@@ -73,16 +85,31 @@ $btnligaPoke.addEventListener("click", ligapokedex);
 $btndesligaPoke.addEventListener("click", desligapokedex);
 
 
+
+
+
 var $visorLigado= document.querySelector(".visor");
 var $imgescondida= document.querySelector(".pokeinvisor");
 function ligapokedex(){
-    
+    state="ligado"
+    listapoke(1)
+.then( resposta => {
+
+   } )
+.catch( err => console.log(err) )
    $visorLigado.classList.add("ligado");
    $imgescondida.style.zIndex="3" ;
    $imgescondida.style.transition="3s";   
 }
 
 function desligapokedex(){
+    mudapoke=1
+    listapoke(1)
+    .then( resposta => {
+    
+       } )
+    .catch( err => console.log(err) )
+    state="desligado"
     $visorLigado.classList.remove('ligado');
 
     $imgescondida.style.zIndex='-3';

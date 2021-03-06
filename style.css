@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body{
 	margin:0;
 	padding:0;
@@ -117,9 +118,11 @@ background-color: #ccc;
 }
 .moldinterno2{
 	width:49% ;
+	z-index: 4;
 	perspective: 800px;
 }
 .cardcapinha{
+	z-index: 4;
 	border-left: 7px solid black;
     border-bottom: 7px solid black;
     border-right: 7px solid black;
@@ -158,6 +161,8 @@ background-color: #ccc;
 backface-visibility: hidden;
 }
 .visoratrib{
+	z-index: 4;
+	overflow: hidden;
 	position: absolute;
     width: 100%;
    height: 94%;
@@ -166,6 +171,18 @@ backface-visibility: hidden;
 	  background: linear-gradient(to right, #e52d27, #b31217);
 
 
+}
+.visoratrib p{
+	margin-top: 0;
+	height: 15px;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 12px;
+	border:solid #ccc 3px ;
+	backface-visibility: hidden;
+	 background: #ffe259;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #ffa751, #ffe259); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	;
 }
 
 .inf1{
@@ -209,7 +226,7 @@ backface-visibility: hidden;
 	195px 0px 0px 0px #b31217,
 	210px 0px 0px 0px #b31217,
 	225px 0px 0px 0px #b31217,
-	229px 0px 0px 0px #b31217,
+	229px 0px 0px 0px  black,
 
 
      41px -15px 0px 0px  #b31217,
